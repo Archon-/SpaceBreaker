@@ -10,8 +10,20 @@
             <canvas width="480" height="800"></canvas>
         </div>
         <script src="js/game.js" type="text/javascript"></script>
+        <script src="js/screen.js" type="text/javascript"></script>
         <script>
-            Game.init();
+            
+            if(window.addEventListener){
+                window.addEventListener('load', startGame, false); //W3C
+            }
+            else{
+                window.attachEvent('onload', startGame, false); //IE
+            }
+            
+            function startGame(){
+                Game.init();
+            }
+            //Game.init();
         </script>
     </body>
 </html>

@@ -11,6 +11,25 @@ window.requestAnimFrame = (function(){
 var imageObj = new Image();
 imageObj.src = 'images/img3.png';
 
+var bgSpace1 = new Image();
+bgSpace1.src = 'images/bg-space1.jpg';
+
+/*
+// Datebase object test 
+
+var DB = {
+    img: {
+        background: {
+            src: 'images/img3.png'
+        }
+    }
+}
+
+var img3 = new Image();
+img3.src = DB.img.background.src;
+
+*/
+
 var Game = {
 
 	FPS: {
@@ -109,30 +128,16 @@ var Game = {
     },
 
     render: function(i){
-        var today = new Date(),
-            h = today.getHours(),
-            m = today.getMinutes(),
-            s = today.getSeconds();
-
         Game.clearScreen();
         console.log('Render ...');
 
-	    this.ctx.drawImage(imageObj, 0, 0);
-		
-        this.ctx.fillStyle = "black";
-        this.ctx.font = "bold 32px Arial";
-        this.ctx.fillText("Responsive Canvas 2", 100, 200);
-        this.ctx.fillText('Time: '+h+':'+m+':'+s, 100, 300);
-        this.ctx.fillText('Render counter: '+i, 100, 400);
-        this.ctx.fillText('FPS: '+this.FPS.value, 100, 500);
+        Screen[Screen.current].draw(i);
 
-	    this.ctx.beginPath();
-	    this.ctx.rect(188, 50, 200, 100);
-	    this.ctx.fillStyle = 'yellow';
-	    this.ctx.fill();
-	    this.ctx.lineWidth = 7;
-	    this.ctx.strokeStyle = 'black';
-	    this.ctx.stroke(); 
+	    //this.ctx.drawImage(imageObj, 0, 0);
+		
+        
+
+        //Screen.splash.draw();
 
 	    //this.ctx.drawImage(imageObj, 0, 0);
     },

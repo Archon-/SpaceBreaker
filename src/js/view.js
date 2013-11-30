@@ -1,4 +1,4 @@
-var Screen = {
+var View = {
 
     current: 'splash',
 

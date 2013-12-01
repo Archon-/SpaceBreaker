@@ -74,6 +74,8 @@ var Game = {
 
         (function animloop(){
           requestAnimFrame(animloop);
+            if(i%4 == 0)
+                changeBg(i/20);
           	Game.FPSCounterUpdate();
             Game.render(i);
             i += 1;
@@ -162,6 +164,45 @@ var Game = {
     }
 
 };
+
+var bgPosX = 0,
+    bgPosY = 0;
+
+function changeBg(i){
+    var bg = document.getElementById('wrapper'),
+        xPx,
+        yPx,
+        xNewVal = 0,
+        yNewVal = 0,
+        xCalc = 0,
+        yCalc = 0,
+        xEntropy = Math.random(),
+        yEntropy = Math.random();
+
+    //xPx = bg.style.backgroundPositionX;
+    //yPx = bg.style.backgroundPositionY;
+
+    //console.log('xPx: '+xPx+' yPx: '+yPx);
+
+    xCalc = Math.round((Math.sin(i)+xEntropy)*2);
+    //yCalc = Math.round(Math.abs((Math.cos(i)+yEntropy)*1));
+    yCalc = 2;
+
+    //xNewVal = parseInt(xPx.substring(0, xPx.length - 2)) + xCalc;
+    //yNewVal = parseInt(yPx.substring(0, yPx.length - 2)) + yCalc;
+
+    //if(Math.random() < 0.5){
+        bgPosX += xCalc;
+        bgPosY += yCalc;
+    //}else{
+    //    bgPosX -= xCalc;
+    //    bgPosY -= yCalc;
+    //}
+
+    bg.style.backgroundPosition = bgPosX+'px '+bgPosY+'px';
+
+    console.log(xCalc+' == '+yCalc);
+}
 
 // Automatic load on..
 			

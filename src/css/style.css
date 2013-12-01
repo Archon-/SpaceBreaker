@@ -5,6 +5,11 @@ html, body {
     padding: 0;
     overflow: hidden;
 }
+
+#wrapper {
+    background: url('../images/bg-space2.jpg') 0px 0px;
+}
+
 #game {
     transform-origin: 0 0;
     -webkit-transform-origin: 0 0;

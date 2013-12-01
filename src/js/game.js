@@ -169,6 +169,7 @@ var bgPosX = 0,
     bgPosY = 0;
 
 function changeBg(i){
+    
     var bg = document.getElementById('wrapper'),
         xPx,
         yPx,
@@ -201,7 +202,8 @@ function changeBg(i){
 
     bg.style.backgroundPosition = bgPosX+'px '+bgPosY+'px';
 
-    console.log(xCalc+' == '+yCalc);
+    //console.log(xCalc+' == '+yCalc);
+    
 }
 
 // Automatic load on..

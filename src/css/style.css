@@ -8,6 +8,7 @@ html, body {
 
 #wrapper {
     background: url('../images/bg-space2.jpg') 0px 0px;
+    height: 100%;
 }
 
 #game {

@@ -49,6 +49,7 @@ var Game = {
 
         // Setting up the canvas
         var ctx = this.ctx = this.canvas.getContext('2d');
+        var canvas = this.element;
         //ctx.fillStyle = '#6f8ed9';
         //ctx.fillRect(0, 0, this.content[0], this.content[1]);
         

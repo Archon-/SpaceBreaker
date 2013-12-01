@@ -18,6 +18,15 @@ var View = {
             Game.ctx.fillText("Splash screen", 100, 200);
             Game.ctx.fillText('Render counter: '+i, 100, 400);
             Game.ctx.fillText('FPS: '+Game.FPS.value, 100, 500);
+
+            this.listeners();
+        },
+        listeners: function(){
+            Game.canvas.addEventListener('mousedown', this.clickTest, false);
+        },
+        clickTest: function(){
+            View.current = 'test'
+            console.log('clicked!');
         }
     },
 

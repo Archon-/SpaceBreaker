@@ -60,6 +60,13 @@ var View = {
             Game.ctx.strokeStyle = 'black';
             Game.ctx.stroke(); 
         }
+    },
+
+    level: {
+        name: 'Level',
+        draw: function(i){
+            
+        }
     }
 }
 

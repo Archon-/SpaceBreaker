@@ -14,6 +14,8 @@ imageObj.src = 'images/img3.png';
 var bgSpace1 = new Image();
 bgSpace1.src = 'images/bg-space1.jpg';
 
+//var oBall, oPadd, oBricks, oLevel;
+
 /*
 // Datebase object test 
 
@@ -72,9 +74,16 @@ var Game = {
         this.FPS.lastTimeCounterUpdate = now;
 
         var i = 0;
+        var initName = '';
 
         (function animloop(){
           requestAnimFrame(animloop);
+            if(initName != View.current){
+                Game.canvas.removeEventListener('mousemove', changePadMouse, false);
+                Game.canvas.removeEventListener('click', changePadMouse, false);
+                View[View.current].init();
+                initName = View.current;
+            }
             if(i%4 == 0)
                 changeBg(i/20);
           	Game.FPSCounterUpdate();
@@ -226,3 +235,53 @@ function changeBg(i){
 
 	window.onload = onLoad;
 	*/
+
+            function keyDown(e){
+                var keyCode = e.keyCode;
+                switch (keyCode) {
+                    case 37: // 'Left' key
+                        bLeftBut = true;
+                        break;
+                    case 39: // 'Right' key
+                        bRightBut = true;
+                        break;
+                }
+                console.log('KEY CODE: '+keyCode);
+            }
+
+            function keyUp(e){
+                var keyCode = e.keyCode;
+                switch (keyCode) {
+                    case 37: // 'Left' key
+                        bLeftBut = false;
+                        break;
+                    case 39: // 'Right' key
+                        bRightBut = false;
+                        break;
+                }
+                console.log('KEY CODE: '+keyCode);
+            }
+
+            function changePadMouse(e){
+                var mouseX, mouseY;
+
+                if(e.offsetX) {
+                    mouseX = e.offsetX;
+                    mouseY = e.offsetY;
+                }else if(e.layerX) {
+                    mouseX = e.layerX;
+                    mouseY = e.layerY;
+                }
+
+                oPadd.x = Math.max(mouseX - (oPadd.w/2), 0);
+                oPadd.x = Math.min(Game.canvas.width - oPadd.w, oPadd.x);
+                //console.log('mouseX: '+mouseX+', mouseY: '+mouseY);
+                console.log('mouse move...')
+            }
+
+            function changePadTouch(e){
+                e.preventDefault();
+                var targetEvent =  e.touches.item(0);  
+                oPadd.x = Math.max(targetEvent.clientX - (oPadd.w/2), 0);
+                oPadd.x = Math.min(Game.canvas.width - oPadd.w, oPadd.x);
+            }

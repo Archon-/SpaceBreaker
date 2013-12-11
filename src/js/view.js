@@ -4,6 +4,9 @@ var View = {
 
     splash: {
         name: 'Splash 1',
+        init: function(){
+            console.log('Splash init');
+        },
         draw: function(i){
             Game.ctx.beginPath();
             Game.ctx.rect(0, 0, 480, 800);
@@ -22,7 +25,7 @@ var View = {
             this.listeners();
         },
         listeners: function(){
-            Game.canvas.addEventListener('mousedown', this.clickTest, false);
+            //Game.canvas.addEventListener('mousedown', this.clickTest, false);
         },
         clickTest: function(){
             View.current = 'test'
@@ -32,6 +35,9 @@ var View = {
 
     end: {
         name: 'This is the end of game',
+        init: function(){
+            console.log('End view init');
+        },
         draw: function(){
             Game.ctx.drawImage(bgSpace1, 0, 0);
         }
@@ -39,6 +45,9 @@ var View = {
 
     test: {
         name: 'Testing screen',
+        init: function(){
+            console.log('test view init');
+        },
         draw: function(i){
             var today = new Date(),
                 h = today.getHours(),
@@ -64,6 +73,33 @@ var View = {
 
     level: {
         name: 'Level',
+        init: function(){
+            console.log('lovel view init.');
+
+            var width = Game.canvas.width;
+            var height = Game.canvas.height;
+
+            var padImg = new Image();
+            padImg.src = 'images/padd2.png';
+            padImg.onload = function() {};
+
+            oBall = new Ball(width / 2, 550, 0.5, -5, 10); // new ball object
+            oPadd = new Padd(width / 2, 240, 20, padImg); // new padd object
+            oBricks = new Bricks((width / 8) - 1, 20, 6, 8, 2); // new bricks object
+            oLevel = new Level(0, 4);
+
+            loadLevel();
+
+            // HTML5 Local storage - get values
+            sLastTime = localStorage.getItem('last-time');
+            sLastPoints = localStorage.getItem('last-points');
+
+            Game.canvas.addEventListener('keydown', keyDown, false);
+            Game.canvas.addEventListener('keyup', keyUp, false);
+            Game.canvas.addEventListener('mousemove', changePadMouse, false);
+            Game.canvas.addEventListener('touchmove', changePadTouch, false);
+
+        },
         draw: function(i){
             
         }

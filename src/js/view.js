@@ -102,6 +102,12 @@ var View = {
         },
         draw: function(i){
             
+        },
+        listeners: {
+            keydown: 'keyDown',
+            keyup: 'keyUp',
+            mousemove: 'changePadMouse',
+            touchmove: 'changePadTouch'
         }
     }
 }

@@ -44,6 +44,7 @@ var Game = {
     init: function () {
         // Get DOM elements
         this.element = document.getElementById('game');
+        this.elementTmp;
         this.canvas = this.element.firstElementChild;
         
         // Original content size
@@ -79,8 +80,9 @@ var Game = {
         (function animloop(){
           requestAnimFrame(animloop);
             if(initName != View.current){
-                Game.canvas.removeEventListener('mousemove', changePadMouse, false);
-                Game.canvas.removeEventListener('click', changePadMouse, false);
+                //Game.canvas.removeEventListener('mousemove', changePadMouse, false);
+                //Game.canvas.removeEventListener('click', changePadMouse, false);
+                Game.removeAllListeners(initName);
                 View[View.current].init();
                 initName = View.current;
             }
@@ -171,6 +173,22 @@ var Game = {
 	    		this.FPS.lastTimeCounterUpdate = now;
 	    	}
     	}
+    },
+
+    removeAllListeners: function(view){
+        console.log('view: '+view);
+        if(view.length > 0){
+            for(var listenerName in View[view].listeners){
+                var listenerFn = View[view].listeners[listenerName];
+
+                (function(){
+                    Game.canvas.removeEventListener(listenerName, listenerFn, false);
+                })();
+               console.log('key: '+listenerName+', fnName: '+listenerFn);
+            }
+            //if(view == 'level')
+            //    Game.canvas.removeEventListener('mousemove', changePadMouse, false);
+        }
     }
 
 };

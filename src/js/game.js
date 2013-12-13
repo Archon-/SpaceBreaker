@@ -75,14 +75,15 @@ var Game = {
         this.FPS.lastTimeCounterUpdate = now;
 
         var i = 0;
-        var initName = '';
+        var initName = 'splash';
 
         (function animloop(){
           requestAnimFrame(animloop);
             if(initName != View.current){
                 //Game.canvas.removeEventListener('mousemove', changePadMouse, false);
                 //Game.canvas.removeEventListener('click', changePadMouse, false);
-                Game.removeAllListeners(initName);
+                View[initName].listenersOff(initName);
+                View[View.current].listenersOn(View.current);
                 View[View.current].init();
                 initName = View.current;
             }

@@ -27,6 +27,12 @@ var View = {
         listeners: function(){
             //Game.canvas.addEventListener('mousedown', this.clickTest, false);
         },
+        listenersOn: function(){
+
+        },
+        listenersOff: function(){
+
+        },
         clickTest: function(){
             View.current = 'test'
             console.log('clicked!');
@@ -40,6 +46,12 @@ var View = {
         },
         draw: function(){
             Game.ctx.drawImage(bgSpace1, 0, 0);
+        },
+        listenersOn: function(){
+
+        },
+        listenersOff: function(){
+
         }
     },
 
@@ -94,14 +106,27 @@ var View = {
             sLastTime = localStorage.getItem('last-time');
             sLastPoints = localStorage.getItem('last-points');
 
+            /*
             Game.canvas.addEventListener('keydown', keyDown, false);
             Game.canvas.addEventListener('keyup', keyUp, false);
             Game.canvas.addEventListener('mousemove', changePadMouse, false);
             Game.canvas.addEventListener('touchmove', changePadTouch, false);
-
+            */
         },
         draw: function(i){
             
+        },
+        listenersOn: function(){
+            Game.canvas.addEventListener('keydown', keyDown, false);
+            Game.canvas.addEventListener('keyup', keyUp, false);
+            Game.canvas.addEventListener('mousemove', changePadMouse, false);
+            Game.canvas.addEventListener('touchmove', changePadTouch, false);
+        },
+        listenersOff: function(){
+            Game.canvas.removeEventListener('keydown', keyDown, false);
+            Game.canvas.removeEventListener('keyup', keyUp, false);
+            Game.canvas.removeEventListener('mousemove', changePadMouse, false);
+            Game.canvas.removeEventListener('touchmove', changePadTouch, false);
         },
         listeners: {
             keydown: 'keyDown',

@@ -28,10 +28,10 @@ var View = {
             //Game.canvas.addEventListener('mousedown', this.clickTest, false);
         },
         listenersOn: function(){
-
+            Game.canvas.addEventListener('mousemove', mouseMoving, false);
         },
         listenersOff: function(){
-
+            Game.canvas.removeEventListener('mousemove', mouseMoving, false);
         },
         clickTest: function(){
             View.current = 'test'

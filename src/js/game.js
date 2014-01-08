@@ -304,3 +304,7 @@ function changeBg(i){
                 oPadd.x = Math.max(targetEvent.clientX - (oPadd.w/2), 0);
                 oPadd.x = Math.min(Game.canvas.width - oPadd.w, oPadd.x);
             }
+
+            function mouseMoving(){
+                console.log('Mouse moving...');
+            }

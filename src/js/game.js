@@ -308,3 +308,91 @@ function changeBg(i){
             function mouseMoving(){
                 console.log('Mouse moving...');
             }
+
+            // =========
+
+            var iStart = 0,
+                bRightBut = false,
+                bLeftBut = false,
+                oBall, oPadd, oBricks, oLevel,
+                aSounds = [],
+                iPoints = 0,
+                iGameTimer,
+                iElapsed = iMin = iSec = 0,
+                sLastTime, 
+                sLastPoints;
+
+            // objects :
+            function Ball(x, y, dx, dy, r) {
+                this.x = x;
+                this.y = y;
+                this.dx = dx;
+                this.dy = dy;
+                this.r = r;
+            }
+            function Padd(x, w, h, img) {
+                this.x = x;
+                this.w = w;
+                this.h = h;
+                this.img = img;
+            }
+            function Bricks(w, h, r, c, p) {
+                this.w = w;
+                this.h = h;
+                this.r = r; // rows
+                this.c = c; // cols
+                this.p = p; // padd
+                this.objs;
+                this.colors = ['#9d9d9d', '#f80207', '#feff01', '#0072ff', '#fc01fc', '#03fe03']; // colors for rows
+            }
+
+            function Level(level, bricksNo){
+                this.level = level;    
+                this.bricksNo = bricksNo;
+            }
+
+            function loadLevel(){
+                oBricks.objs = new Array(oBricks.r); // fill-in bricks
+                if(oLevel.level == 0){
+                    oLevel.bricksNo = 2;    
+                    for (i=0; i < oBricks.r; i++) {
+                        oBricks.objs[i] = new Array(oBricks.c);
+                        for (j=0; j < oBricks.c; j++) {
+                            if(j > 3 && j < 5 && i > 2 && i < 5)
+                                oBricks.objs[i][j] = 1;
+                        }
+                    }
+                    console.log('Level 0');
+                }if(oLevel.level == 1){    
+                    oLevel.bricksNo = 32;
+                    oBricks.objs = [[1, 1, 1, 1, 1, 1, 1, 1], 
+                                    [1, 0, 0, 0, 0, 0, 0, 1],
+                                    [1, 0, 1, 1, 1, 1, 0, 1],
+                                    [1, 0, 1, 1, 1, 1, 0, 1],
+                                    [1, 0, 0, 0, 0, 0, 0, 1],
+                                    [1, 1, 1, 1, 1, 1, 1, 1]];
+                    console.log('Level 1');
+                }if(oLevel.level == 2){
+                    oLevel.bricksNo = 24;
+                    for (i=0; i < oBricks.r; i++) {
+                        oBricks.objs[i] = new Array(oBricks.c);
+                        for (j=0; j < oBricks.c; j++) {
+                            if((j % 2 == 0 && i % 2 == 0) || (j % 2 == 1 && i % 2 == 1))
+                                oBricks.objs[i][j] = 1;
+                        }
+                    }
+                }else if(oLevel.level == 3){
+                    oLevel.bricksNo = 48;
+                    for (i=0; i < oBricks.r; i++) {
+                        oBricks.objs[i] = new Array(oBricks.c);
+                        for (j=0; j < oBricks.c; j++) {
+                                oBricks.objs[i][j] = 1;
+                        }
+                    }
+                }
+                
+                oBall.x = 400;
+                oBall.y = 300;
+                oBall.dx = 0.5;
+                oBall.dy = -5;
+            }

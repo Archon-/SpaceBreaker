@@ -146,7 +146,7 @@ var Game = {
         Game.clearScreen();
         console.log('Render ...');
 
-        View[View.current].draw(i);
+        View[View.current].run(i);
 
 	    //this.ctx.drawImage(imageObj, 0, 0);
 		

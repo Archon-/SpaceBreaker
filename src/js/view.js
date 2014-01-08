@@ -7,7 +7,7 @@ var View = {
         init: function(){
             console.log('Splash init');
         },
-        draw: function(i){
+        run: function(i){
             Game.ctx.beginPath();
             Game.ctx.rect(0, 0, 480, 800);
             Game.ctx.fillStyle = 'red';
@@ -44,7 +44,7 @@ var View = {
         init: function(){
             console.log('End view init');
         },
-        draw: function(){
+        run: function(){
             Game.ctx.drawImage(bgSpace1, 0, 0);
         },
         listenersOn: function(){
@@ -60,7 +60,7 @@ var View = {
         init: function(){
             console.log('test view init');
         },
-        draw: function(i){
+        run: function(i){
             var today = new Date(),
                 h = today.getHours(),
                 m = today.getMinutes(),
@@ -113,8 +113,12 @@ var View = {
             Game.canvas.addEventListener('touchmove', changePadTouch, false);
             */
         },
-        draw: function(i){
-            
+        run: function(i){
+            function ff(){
+                console.log('ff called');
+            }
+
+            ff();
         },
         listenersOn: function(){
             Game.canvas.addEventListener('keydown', keyDown, false);

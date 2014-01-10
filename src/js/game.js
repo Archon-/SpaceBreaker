@@ -199,7 +199,7 @@ var bgPosX = 0,
 
 function changeBg(i){
     
-    var bg = document.getElementById('wrapper'),
+    var bg = document.getElementById('cn'),
         xPx,
         yPx,
         xNewVal = 0,

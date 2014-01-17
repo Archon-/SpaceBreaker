@@ -320,7 +320,9 @@ function changeBg(i){
                 iGameTimer,
                 iElapsed = iMin = iSec = 0,
                 sLastTime, 
-                sLastPoints;
+                sLastPoints,
+                runLevel = false,
+                life = 3;
 
             // objects :
             function Ball(x, y, dx, dy, r) {

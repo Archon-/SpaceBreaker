@@ -119,6 +119,8 @@ var View = {
             Game.canvas.addEventListener('mousemove', changePadMouse, false);
             Game.canvas.addEventListener('touchmove', changePadTouch, false);
             */
+
+            runLevel = true;
         },
         run: function(i){
             // draw Ball (circle)
@@ -188,8 +190,13 @@ var View = {
                     aSounds[2].play(); // play sound
                 }
                 else if (oBall.y + oBall.dy + oBall.r > Game.ctx.canvas.height) {
-                    clearInterval(iStart);
-                    clearInterval(iGameTimer);
+                    //clearInterval(iStart);
+                    //clearInterval(iGameTimer);
+                    life--;
+                    oBall.x = Game.ctx.canvas.width / 2;
+                    oBall.y = 150;
+                    if(life == 0)
+                        View.current = 'end';
 
                     // HTML5 Local storage - save values
                     localStorage.setItem('last-time', iMin + ':' + iSec);
@@ -208,8 +215,9 @@ var View = {
             iSec = iElapsed % 60;
             if (iMin < 10) iMin = "0" + iMin;
             if (iSec < 10) iSec = "0" + iSec;
-            Game.ctx.fillText('Time: ' + iMin + ':' + iSec, 600, 520);
-            Game.ctx.fillText('Points: ' + iPoints, 600, 550);
+            Game.ctx.fillText('Time: ' + iMin + ':' + iSec, 20, 520);
+            Game.ctx.fillText('Points: ' + iPoints, 20, 550);
+            Game.ctx.fillText('Life: ' + life, 20, 580);
 
             if (sLastTime != null && sLastPoints != null) {
                 Game.ctx.fillText('Last Time: ' + sLastTime, 600, 460);

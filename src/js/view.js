@@ -95,7 +95,7 @@ var View = {
             padImg.src = 'images/padd2.png';
             padImg.onload = function() {};
 
-            oBall = new Ball(width / 2, 550, 0.5, -5, 10); // new ball object
+            oBall = new Ball(width / 2, 550, 0.5, -5, 10); // new ball object //0.5
             oPadd = new Padd(width / 2, 240, 20, padImg); // new padd object
             oBricks = new Bricks((width / 8) - 1, 20, 6, 8, 2); // new bricks object
             oLevel = new Level(0, 4);

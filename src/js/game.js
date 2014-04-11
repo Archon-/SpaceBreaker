@@ -395,6 +395,6 @@ function changeBg(i){
                 
                 oBall.x = 400;
                 oBall.y = 300;
-                oBall.dx = 0.5;
+                oBall.dx = 5;
                 oBall.dy = -5;
             }
